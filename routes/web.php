@@ -27,6 +27,8 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/sales', [SalesController::class, 'index'])->name('sales');
 Route::post('/sales', [SalesController::class, 'store'])->name('sales.store');
+Route::put('/sales/{sm_id}', [SalesController::class, 'update'])->name('sales.update');
+Route::delete('/sales/{sm_id}', [SalesController::class, 'destroy'])->name('sales.destroy');
 
 
 require __DIR__.'/auth.php';

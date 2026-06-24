@@ -2,6 +2,35 @@ import TextInput from "@/Components/TextInput";
 import { Fragment, useEffect } from "react";
 
 export default function FormContentSales({ action, setData, data, errors, title, defaultValue, children }) {
+    if (action === 'DETAIL') {
+        useEffect(() => {
+            if (defaultValue) {
+                setData(prev => ({
+                    ...prev,
+                    sm_date: defaultValue.sm_date,
+                    sm_name: defaultValue.sm_name,
+                    sm_source: defaultValue.sm_source,
+                    sm_hpp: defaultValue.sm_hpp,
+                    sm_jual: defaultValue.sm_jual,
+                    sm_qty: defaultValue.sm_qty,
+                }))
+            }
+        }, [defaultValue]);
+        return (
+            <div>
+                <div class="px-4 py-2 sm:px-0">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900 text-left border-b-2">
+                        Edit Sales
+                    </h3>
+                    {children}
+                </div>
+                <fieldset disabled>
+                    <FormData setData={setData} data={data} errors={errors} />
+                </fieldset>
+            </div>
+        )
+    }
+
     if (action === 'TAMBAH') {
         useEffect(() => {
             if (defaultValue) {
@@ -27,6 +56,33 @@ export default function FormContentSales({ action, setData, data, errors, title,
                 </div>
                 <FormData data={data} setData={setData} errors={errors} />
                 <button type="submit" class="btn btn-primary mt-3 text-white">Simpan</button>
+            </div>
+        )
+    }
+    if (action === 'EDIT') {
+        useEffect(() => {
+            if (defaultValue) {
+                setData(prev => ({
+                    ...prev,
+                    sm_date: defaultValue.sm_date,
+                    sm_name: defaultValue.sm_name,
+                    sm_source: defaultValue.sm_source,
+                    sm_hpp: defaultValue.sm_hpp,
+                    sm_jual: defaultValue.sm_jual,
+                    sm_qty: defaultValue.sm_qty,
+                }))
+            }
+        }, [defaultValue]);
+        return (
+            <div>
+                <div class="px-4 py-2 sm:px-0">
+                    <h3 class="text-lg leading-6 font-medium text-gray-900 text-left border-b-2">
+                        Edit Sales
+                    </h3>
+                    {children}
+                </div>
+                <FormData setData={setData} data={data} errors={errors} />
+                <button type="submit" class="btn btn-success mt-3 text-white">Simpan</button>
             </div>
         )
     }
