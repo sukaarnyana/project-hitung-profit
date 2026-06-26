@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InventoryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,11 @@ Route::get('/sales', [SalesController::class, 'index'])->name('sales');
 Route::post('/sales', [SalesController::class, 'store'])->name('sales.store');
 Route::put('/sales/{sm_id}', [SalesController::class, 'update'])->name('sales.update');
 Route::delete('/sales/{sm_id}', [SalesController::class, 'destroy'])->name('sales.destroy');
+
+Route::get('/inventory', [InventoryController::class, 'index'])->name('inventory');
+Route::post('/inventory', [InventoryController::class, 'store'])->name('inventory.store');
+Route::put('/inventory/{in_id}', [InventoryController::class, 'update'])->name('inventory.update');
+Route::delete('/inventory/{in_id}', [InventoryController::class, 'destroy'])->name('inventory.destroy');
 
 
 require __DIR__.'/auth.php';
